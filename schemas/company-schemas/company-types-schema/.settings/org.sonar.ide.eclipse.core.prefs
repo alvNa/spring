@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+extraProperties=
+projectKey=com.dia.ws.model\:dia-types-schema
+serverUrl=http\://calidadweb.lares.dsd/sonarqube
+version=2

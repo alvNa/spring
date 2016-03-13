@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0"
+xmlns:companyAudit="http://www.company.com/schema/company-audit" targetNamespace="http://www.company.com/schema/company-audit">
+		
+	<xs:simpleType name="CDATA">
+		<xs:restriction base='xs:string'>
+<!-- 			<xs:pattern value='<![CDATA[]]'/> -->
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="signatureType">
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="type" type="xs:string" use="required"/>
+		<xs:attribute name="value" type="companyAudit:CDATA" use="required"/>	
+	</xs:complexType>
+	
+	<!-- Atributos generales de auditoría -->                                                                	
+	<xs:attributeGroup name="auditAttr">
+		<xs:attribute name="uuid" type="xs:long" use="required"/>
+		<xs:attribute name="timestamp" type="xs:dateTime" use="required"/>
+		<xs:attribute name="remoteUser" type="xs:string" use="required"/>
+		<xs:attribute name="applicationName" type="xs:string" use="required"/>
+		<xs:attribute name="applicationEvent" type="xs:string" use="required"/>
+	</xs:attributeGroup>
+	 
+	<!-- Tipo complejo para la auditoria --> 
+	<xs:complexType name="auditType">
+		<xs:sequence minOccurs="0" maxOccurs="1">
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="arguments" type="companyAudit:signatureType"/>
+			</xs:sequence>
+			<xs:element name="return" type="companyAudit:signatureType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="exception" type="companyAudit:signatureType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="companyAudit:auditAttr"/>		
+	</xs:complexType>
+</xs:schema>
