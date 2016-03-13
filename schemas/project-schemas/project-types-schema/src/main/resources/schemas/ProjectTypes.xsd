@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1"
+xmlns:projectTypes="http://www.company.com/project-commons/schema/project-types" targetNamespace="http://www.company.com/project-commons/schema/project-types">
+	
+	<xs:simpleType name="itemType">
+		<xs:annotation>
+			<xs:documentation>
+				Item Types:
+				0 - SHORT
+				1 - MEDIUM
+				2 - LARGE
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="zoneType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="europe"/>
+			<xs:enumeration value="usa"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+</xs:schema>

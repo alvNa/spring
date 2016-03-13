@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1"
+xmlns:types="http://www.company.com/schema/company-types"
+xmlns:companyAudit="http://www.company.com/schema/company-audit"
+xmlns:projectTypes="http://www.company.com/project-commons/schema/project-types"
+xmlns:projectCommons="http://www.company.com/project-commons/schema/project-commons" targetNamespace="http://www.company.com/project-commons/schema/project-commons">
+
+	<xs:import namespace="http://www.company.com/schema/company-types" schemaLocation="${schemaLocation.companyTypes}"/>
+	<xs:import namespace="http://www.company.com/schema/company-audit" schemaLocation="${schemaLocation.companyAudit}"/>
+	<xs:import namespace="http://www.company.com/project-commons/schema/project-types" schemaLocation="${schemaLocation.projectTypes}"/>
+
+	<xs:attributeGroup name="itemAttr">
+		<xs:attribute name="businessUnitId" type="types:businessUnitIdType" use="required"/>
+		<xs:attribute name="description" type="xs:string" use="required"/>
+		<xs:attribute name="quantity" type="xs:decimal" use="required"/>
+	</xs:attributeGroup>
+	
+	<xs:complexType name="item">
+		<xs:attributeGroup ref="projectCommons:itemAttr"/>
+	</xs:complexType>
+	
+	<xs:complexType name="auditProject">
+		<xs:complexContent>
+			<xs:extension base="companyAudit:auditType">
+				<xs:attribute name="businessUnitId" type="types:businessUnitIdType" use="required"/>			
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+</xs:schema>

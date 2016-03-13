@@ -1,0 +1,11 @@
+--
+    If the <catalog/> parameter isn't working, this link to schema is
+    not recognized and the test will fail because of a missing schema.
+    Using REWRITE_SYSTEM we replace the schema in the URL namespace by the schema inside
+    the jar artifact. With this way it hasn't to check with url in the schemaLocation in the import.
+--
+
+REWRITE_SYSTEM "http://www.company.com/schema/company-types/CompanyTypes.xsd" "maven:com.company.ws.model:company-types-schema:jar::!/schemas/CompanyTypes.xsd"
+REWRITE_SYSTEM "http://www.company.com/schema/company-audit/Audit.xsd" "maven:com.company.ws.model:company-audit-schema:jar::!/schemas/Audit.xsd"
+REWRITE_SYSTEM "http://www.company.com/project-commons/schema/project-types/ProjectTypes.xsd" "maven:com.project.commons.ws.model:project-types-schema:jar::!/schemas/ProjectTypes.xsd"
+REWRITE_SYSTEM "http://www.company.com/project-commons/schema/project-commons/ProjectCommons.xsd" "maven:com.project.commons.ws.model:project-commons-schema:jar::!/schemas/url/ProjectCommons.xsd"

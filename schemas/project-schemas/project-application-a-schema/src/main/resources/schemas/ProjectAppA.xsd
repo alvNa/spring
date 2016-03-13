@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1"
+xmlns:types="http://www.company.com/schema/company-types"
+xmlns:companyAudit="http://www.company.com/schema/company-audit"
+xmlns:projectTypes="http://www.company.com/project-commons/schema/project-types"
+xmlns:projectCommons="http://www.company.com/project-commons/schema/project-commons"
+xmlns:projectAppA="http://www.company.com/project-applicattion-a/schema/project-app-a" targetNamespace="http://www.company.com/project-app-a/schema/project-app-a">
+	
+	<xs:import namespace="http://www.company.com/schema/company-types" schemaLocation="${schemaLocation.companyTypes}"/>
+	<xs:import namespace="http://www.company.com/schema/company-audit" schemaLocation="${schemaLocation.companyAudit}"/>
+	<xs:import namespace="http://www.company.com/project-commons/schema/project-types" schemaLocation="${schemaLocation.projectTypes}"/>
+ 	<xs:import namespace="http://www.company.com/project-commons/schema/project-commons" schemaLocation="${schemaLocation.projectCommons}"/>
+
+	<xs:element name="buyFactor">
+		<xs:complexType>
+			<xs:sequence maxOccurs="1">
+				<xs:element name="buyFactorValue" type="xs:double"/>
+				<xs:element name="factorTypeId" type="xs:long"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="itemAppA">
+		<xs:complexContent>
+			<xs:extension base="projectCommons:item">
+				<xs:sequence minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="buyFactorValue" type="xs:double"/>
+					<xs:element name="factorTypeId" type="xs:double"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.project.ws.model</groupId>
+	<artifactId>project-parent-schemas</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>project-parent-schemas</name>
+	<description>Project schemas POM parent</description>
+
+	<properties>
+		<project.company.groupId>com.company.ws.model</project.company.groupId>
+		<project.company.artifactId>company-types-schema</project.company.artifactId>
+		<project.company.version>0.0.1-SNAPSHOT</project.company.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-basics</artifactId>
+			<version>0.9.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-basics-annotate</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.company.ws.model</groupId>
+			<artifactId>company-types-schema</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<inherited>true</inherited>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<modules>
+		<module>project-commons-schema</module>
+		<module>project-types-schema</module>
+		<module>project-application-a-schema</module>
+		<module>project-application-b-schema</module>
+	</modules>
+</project>
