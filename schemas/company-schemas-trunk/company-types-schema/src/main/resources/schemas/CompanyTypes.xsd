@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.company.com/schema/company-types" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:types="http://www.company.com/schema/company-types"
+	version="1.0">
+	
+	<xs:simpleType name="locationType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="process"/>
+			<xs:enumeration value="application"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="userRolType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="admin"/>
+			<xs:enumeration value="user"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="businessUnitIdType">
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="99999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+</xs:schema>
